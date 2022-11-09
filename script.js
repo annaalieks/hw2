@@ -15,9 +15,12 @@ let minutes = seconds * 60;
 let hours = minutes * 60;
 let days = hours * 24;
 
-let durationBetweenDates = (startDate, endDate, seconds) => (endDate - startDate) / seconds;
+let durationBetweenDates = (from, to, duration) => Math.abs((to - from) / duration);
 
-console.log(durationBetweenDates(), 'seconds');
+console.log(durationBetweenDates(startDate, endDate, seconds) + ' seconds');
+console.log(durationBetweenDates(startDate, endDate, minutes) +  ' minutes');
+console.log(durationBetweenDates(startDate, endDate, hours) + ' hours');
+console.log(durationBetweenDates(startDate, endDate, days) + ' days');
 
 // Функція повертатиме часовий період між цими датами згідно розмірності.
 // Також вкажіть значення по замовчуванню для всіх цих параметрів (на ваш вибір).
