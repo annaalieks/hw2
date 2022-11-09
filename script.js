@@ -8,8 +8,8 @@
 // - кінцеву дату (string)
 // - розмірність ('days', 'hours', 'minutes', seconds)
 
-let startDate = new Date('26 Jun 1993').getTime();
-let endDate = new Date('10 Jul 1997').getTime();
+let startDate = new Date('26 Jun 1993');
+let endDate = new Date('10 Jul 1997');
 let seconds = 1000;
 let minutes = seconds * 60;
 let hours = minutes * 60;
@@ -34,35 +34,35 @@ console.log(durationBetweenDates(), 'seconds');
 // Приклад:
 
 // *// приклад об'єкту*
-const priceData = {
-  Apples: '23.4',
-  BANANAS: '48',
-  oRAnGEs: '48.7584',
-};
-
-function optimizer(priceData) {
-    return Object.keys(priceData).reduce(
-        (initialValue, key) => {
-            initialValue[key.toLowerCase()] = priceData[key];
-            return initialValue;
-  }, {});
-};
-
-// function optimizer(priceData) {
-//     return Object.values(priceData).reduce(
-//         (initialValue, value) => {
-//             initialValue[Number(value).toFixed(2)] = priceData[value];
-//             return initialValue;
-//         }, {});
+// const priceData = {
+//   Apples: '23.4',
+//   BANANAS: '48',
+//   oRAnGEs: '48.7584',
 // };
 
-let updatedPriceData = optimizer(priceData);
+// function optimizer(priceData) {
+//     return Object.keys(priceData).reduce(
+//         (initialValue, key) => {
+//             initialValue[key.toLowerCase()] = priceData[key];
+//             return initialValue;
+//   }, {});
+// };
 
-console.log(updatedPriceData) // {apples: '23.40', bananas: '48.00', oranges: '48.76'}
+// // function optimizer(priceData) {
+// //     return Object.values(priceData).reduce(
+// //         (initialValue, value) => {
+// //             initialValue[Number(value).toFixed(2)] = priceData[value];
+// //             return initialValue;
+// //         }, {});
+// // };
 
-for (const [key, value] of Object.entries(priceData)) {
-  console.log(`${key.toLowerCase()}: ${Number(value).toFixed(2)}`);
-};
+// let updatedPriceData = optimizer(priceData);
+
+// console.log(updatedPriceData) // {apples: '23.40', bananas: '48.00', oranges: '48.76'}
+
+// for (const [key, value] of Object.entries(priceData)) {
+//   console.log(`${key.toLowerCase()}: ${Number(value).toFixed(2)}`);
+// };
 
 // **Задача про рекурсію та ітерацію**
 
