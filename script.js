@@ -75,24 +75,31 @@ console.log(durationBetweenDates(startDate, endDate, days) + ' days');
 
 // Приклад:
 
-// function recursiveOddSumTo(number) {
+function recursiveOddSumTo(number) {
+    if (number === 1) {
+        return 1;
+    } else if (number % 2 == 0) {
+        return (number - 1) + recursiveOddSumTo(number - 3);
+    } else {
+        return number + recursiveOddSumTo(number - 2);
+    };
+};
 
-//   *// тут ваш код*
-
-// };
-
-// console.log(recursiveOddSumTo(1)) *// 1*
-// console.log(recursiveOddSumTo(10)) *// 25*
+console.log(recursiveOddSumTo(1)) // 1
+console.log(recursiveOddSumTo(10)) // 25
 
 // 1. Функцію яка ітеративно (в циклі) буде знаходити суму всіх непарних додатніх чисел до якогось числа.
 
 // Приклад:
 
-// function iterativeOddSumTo(number) {
+function iterativeOddSumTo(number) {
+    let sum = 0;
+    for (i = 1; i <= number; i++) {
+        if (i % 2 == 0) {
+            sum + i;
+        }        
+    }
+};
 
-//   *// тут ваш код*
-
-// };
-
-// console.log(iterativeOddSumTo(1)) *// 1*
-// console.log(iterativeOddSumTo(10)) *// 25*
+console.log(iterativeOddSumTo(1)) // 1
+console.log(iterativeOddSumTo(10)) // 25
