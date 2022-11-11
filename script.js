@@ -37,35 +37,23 @@ console.log(durationBetweenDates(startDate, endDate, days) + ' days');
 // Приклад:
 
 // *// приклад об'єкту*
-// const priceData = {
-//   Apples: '23.4',
-//   BANANAS: '48',
-//   oRAnGEs: '48.7584',
-// };
+const priceData = {
+  Apples: '23.4',
+  BANANAS: '48',
+  oRAnGEs: '48.7584',
+};
 
-// function optimizer(priceData) {
-//     return Object.keys(priceData).reduce(
-//         (initialValue, key) => {
-//             initialValue[key.toLowerCase()] = priceData[key];
-//             return initialValue;
-//   }, {});
-// };
+function optimizer(priceData) {
+    return Object.entries(priceData).reduce(
+        (initialValue, [key, value]) => {
+            initialValue[key.toLowerCase()] = parseFloat(value).toFixed(2);
+            return initialValue;
+  }, {});
+};
 
-// // function optimizer(priceData) {
-// //     return Object.values(priceData).reduce(
-// //         (initialValue, value) => {
-// //             initialValue[Number(value).toFixed(2)] = priceData[value];
-// //             return initialValue;
-// //         }, {});
-// // };
+let updatedPriceData = optimizer(priceData);
 
-// let updatedPriceData = optimizer(priceData);
-
-// console.log(updatedPriceData) // {apples: '23.40', bananas: '48.00', oranges: '48.76'}
-
-// for (const [key, value] of Object.entries(priceData)) {
-//   console.log(`${key.toLowerCase()}: ${Number(value).toFixed(2)}`);
-// };
+console.log(updatedPriceData) // {apples: '23.40', bananas: '48.00', oranges: '48.76'}
 
 // **Задача про рекурсію та ітерацію**
 
@@ -94,11 +82,12 @@ console.log(recursiveOddSumTo(10)) // 25
 
 function iterativeOddSumTo(number) {
     let sum = 0;
-    for (i = 1; i <= number; i++) {
-        if (i % 2 == 0) {
-            sum + i;
-        }        
+    for (let i = 1; i <= number; i++) {
+        if (i % 2 !== 0) {
+            sum = sum + i;
+        } 
     }
+    return sum;
 };
 
 console.log(iterativeOddSumTo(1)) // 1
