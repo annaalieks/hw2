@@ -8,19 +8,30 @@
 // - кінцеву дату (string)
 // - розмірність ('days', 'hours', 'minutes', seconds)
 
-let startDate = new Date('26 Jun 1993');
-let endDate = new Date('10 Jul 1997');
-let seconds = 1000;
-let minutes = seconds * 60;
-let hours = minutes * 60;
-let days = hours * 24;
 
-let durationBetweenDates = (from, to, duration) => Math.abs((to - from) / duration);
 
-console.log(durationBetweenDates(startDate, endDate, seconds) + ' seconds');
-console.log(durationBetweenDates(startDate, endDate, minutes) +  ' minutes');
-console.log(durationBetweenDates(startDate, endDate, hours) + ' hours');
-console.log(durationBetweenDates(startDate, endDate, days) + ' days');
+function durationBetweenDates(from = '26 Jun 1993', to = '10 Jul 1997', duration = 'days') {
+    from = new Date(from);
+    to = new Date(to);
+    const seconds = 1000;
+    const minutes = seconds * 60;
+    const hours = minutes * 60;
+    const days = hours * 24;
+    if (duration === 'seconds') {
+        return `${Math.abs((from - to) / seconds)} ${duration}`;
+    } if (duration === 'minutes') {
+        return `${Math.abs((from - to) / minutes)} ${duration}`;
+    } if (duration === 'hours') {
+        return `${Math.abs((from - to) / hours)} ${duration}`;
+    } else {
+        return `${Math.abs((from - to) / days)} ${duration}`;
+    }
+};
+
+console.log(durationBetweenDates());
+console.log(durationBetweenDates('26 Jun 1993', '10 Jul 1997', "seconds"));
+console.log(durationBetweenDates('26 Jun 1993', '10 Jul 1997', "minutes"))
+console.log(durationBetweenDates('26 Jun 1993', '10 Jul 1997', "hours"))
 
 // Функція повертатиме часовий період між цими датами згідно розмірності.
 // Також вкажіть значення по замовчуванню для всіх цих параметрів (на ваш вибір).
@@ -43,12 +54,17 @@ const priceData = {
   oRAnGEs: '48.7584',
 };
 
+// function optimizer(priceData) {
+//     return Object.entries(priceData).reduce(
+//         (initialValue, [key, value]) => {
+//             initialValue[key.toLowerCase()] = parseFloat(value).toFixed(2);
+//             return initialValue;
+//   }, {});
+// };
+
 function optimizer(priceData) {
-    return Object.entries(priceData).reduce(
-        (initialValue, [key, value]) => {
-            initialValue[key.toLowerCase()] = parseFloat(value).toFixed(2);
-            return initialValue;
-  }, {});
+    return Object.fromEntries(Object.entries(priceData).map(([key, value]) =>
+        [key.toLowerCase(), parseFloat(value).toFixed(2)]))
 };
 
 let updatedPriceData = optimizer(priceData);
@@ -67,7 +83,7 @@ function recursiveOddSumTo(number) {
     if (number === 1) {
         return 1;
     } else if (number % 2 == 0) {
-        return (number - 1) + recursiveOddSumTo(number - 3);
+        return recursiveOddSumTo(number - 1);
     } else {
         return number + recursiveOddSumTo(number - 2);
     };
